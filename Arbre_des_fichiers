@@ -1,0 +1,47 @@
+/McDonald_app
+│── /public                    # Dossier accessible publiquement
+│   │── index.php              # Point d'entrée du site
+│   │── assets/                # Fichiers CSS, JS, images
+│   │   │── css/
+│   │   │   ├── bootstrap.min.css
+│   │   │   ├── styles.css
+│   │   │── js/
+│   │   │   ├── jquery.min.js
+│   │   │   ├── script.js
+│   │   │── images/
+│   │── uploads/               # Stockage des images uploadées
+│── /app                       # Cœur de l’application
+│   │── /controllers           # Contrôleurs MVC
+│   │   │── ProductController.php
+│   │   │── UserController.php
+│   │   │── AdminController.php
+│   │   │── OrderController.php
+│   │── /models                # Modèles pour interagir avec la BD
+│   │   │── Product.php
+│   │   │── User.php
+│   │   │── Order.php
+│   │   │── Admin.php
+│   │── /dao                   # Accès aux données (DAO)
+│   │   │── ProductDAO.php
+│   │   │── UserDAO.php
+│   │   │── OrderDAO.php
+│   │── /views                  # Vues HTML/PHP
+│   │   │── /public
+│   │   │   ├── home.php
+│   │   │   ├── menu.php
+│   │   │   ├── product.php
+│   │   │   ├── login.php
+│   │   │── /admin
+│   │   │   ├── dashboard.php
+│   │   │   ├── manage_products.php
+│   │   │   ├── manage_orders.php
+│   │   │   ├── manage_users.php
+│── /config                     # Configuration et connexion BD
+│   │── config.php
+│   │── database.php
+│── /sitemap                    # Fichiers XML pour le SEO
+│   │── sitemap.xml
+│── /ajax                       # Fichiers de traitement AJAX
+│   │── add_to_cart.php
+│   │── update_cart.php
+│── dump.sql                     # Dump de la base de données PostgreSQL
