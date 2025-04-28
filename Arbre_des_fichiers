@@ -1,1 +1,37 @@
-
+/ac_store_project/
+├── /assets/
+│   ├── /css/
+│   │   └── style.css           <-- Fichier principal de styles
+│   └── /js/
+│       └── script.js           <-- Code JavaScript (ajax, etc.)
+├── /backup/
+│   ├── scriptPLSQL.sql         <-- Scripts nécessaire au fonctionnement SQL
+│   └── ac_store.sql            <-- Dump PostgreSQL (structure + données)
+├── /classes/
+│   ├── Database.php            <-- Connexion à PostgreSQL
+│   ├── GameDAO.php             <-- DAO pour les jeux
+│   ├── UserDAO.php             <-- DAO pour les utilisateurs
+│   ├── OrderDAO.php            <-- DAO pour les commandes
+│   └── Auth.php                <-- Gestion de l'authentification
+├── /includes/
+│   ├── autoload.php            <-- Autochargement des classes
+│   └── db.php                  <-- Appel Database pour connexion globale
+├── /pages/
+│   ├── home.php                <-- Page d'accueil
+│   ├── login.php               <-- Connexion utilisateur
+│   ├── logout.php              <-- déconnexion utilisateur
+│   ├── register.php            <-- Inscription utilisateur
+│   ├── panier.php              <-- Panier client
+│   ├── product.php             <-- Détail d'un jeu
+│   ├── account.php             <-- Détail de l'utilisateur
+│   └── /admin/
+│       ├── dashboard.php       <-- Tableau de bord admin
+│       ├── manage_games.php    <-- Gestion des jeux (CRUD)
+│       ├── manage_orders.php   <-- Gestion des commandes
+│       └── manage_users.php    <-- Gestion des utilisateurs
+├── /templates/
+│   ├── header.php              <-- Début de page HTML (menu, etc.)
+│   └── footer.php              <-- Fin de page HTML
+├── .gitignore                  <-- Fichiers à ignorer sur GitHub
+├── index.php                   <-- Point d'entrée unique du site
+└── README.md                   <-- Explication rapide du projet
