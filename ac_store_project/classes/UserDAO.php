@@ -6,7 +6,7 @@ class UserDAO
 
     public function __construct()
     {
-        $this->db = Database::getInstance();
+        $this->db = Database::getConnection();
     }
 
     public function register($username, $email, $password)
@@ -20,10 +20,9 @@ class UserDAO
             ':is_admin' => 0
         ]);
     }
-
     public function login($email, $password)
     {
-        $stmt = $this->db->prepare('SELECT * FROM users WHERE email = :email');
+        $stmt = $this->db->prepare('SELECT id, username, email, password, is_admin FROM users WHERE email = :email');
         $stmt->execute([':email' => $email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -32,12 +31,29 @@ class UserDAO
         }
         return false;
     }
-
     public function getUserById($id)
     {
         $stmt = $this->db->prepare('SELECT * FROM users WHERE id = :id');
         $stmt->execute([':id' => $id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    public function getTotalUsers()
+    {
+        $stmt = $this->db->query("SELECT COUNT(*) AS total FROM users");
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $result['total'];
+    }
+
+    public function deleteUser($userId)
+    {
+        $stmt = $this->db->prepare("DELETE FROM users WHERE id = :id");
+        $stmt->execute([':id' => $userId]);
+    }
+
+    public function getAllUsers()
+    {
+        $stmt = $this->db->query("SELECT * FROM users");
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
 ?>

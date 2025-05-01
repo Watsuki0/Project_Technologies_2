@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
+<div class="auth-container">
 <h1>Connexion</h1>
 
 <?php if ($error): ?>
@@ -40,3 +40,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </form>
 
 <p>Pas encore inscrit ? <a href="index.php?page=register">Créer un compte</a></p>
+</div>

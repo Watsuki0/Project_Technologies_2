@@ -8,10 +8,9 @@ class Auth
             'id' => $user['id'],
             'username' => $user['username'],
             'email' => $user['email'],
-            'role' => $user['role']
+            'is_admin' => $user['is_admin'],
         ];
     }
-
     public static function logout()
     {
         unset($_SESSION['user']);
@@ -24,7 +23,7 @@ class Auth
 
     public static function isAdmin()
     {
-        return self::isConnected() && $_SESSION['user']['role'] === 'admin';
+        return self::isConnected() && !empty($_SESSION['user']['is_admin']) && $_SESSION['user']['is_admin'] === true;
     }
 
     public static function getUser()

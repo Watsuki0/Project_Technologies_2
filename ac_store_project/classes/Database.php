@@ -20,10 +20,5 @@ class Database {
         }
         return self::$pdo;
     }
-
-    // Ajouté pour compatibilité avec UserDAO
-    public static function getInstance() {
-        return self::getConnection();
-    }
 }
 ?>

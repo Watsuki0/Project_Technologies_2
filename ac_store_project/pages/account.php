@@ -8,7 +8,7 @@ if (!Auth::isConnected()) {
 // Récupère les informations de l'utilisateur
 $user = Auth::getUser();
 ?>
-
+<div class="account-info">
 <h1>Mon Compte</h1>
 
 <p>Nom d'utilisateur : <?= htmlspecialchars($user['username']) ?></p>
@@ -18,3 +18,4 @@ $user = Auth::getUser();
 <form action="index.php?page=logout" method="POST">
     <button type="submit">Se déconnecter</button>
 </form>
+</div>
