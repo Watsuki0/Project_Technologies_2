@@ -2,7 +2,7 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/ac_store_project/backup/ac_store.sql" dialect="PostgreSQL" />
-    <file url="file://$PROJECT_DIR$/ac_store_project/backup/scriptPLSQL.sql" dialect="Oracle" />
+    <file url="file://$PROJECT_DIR$/ac_store_project/backup/scriptPLSQL.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/ac_store_project/classes/GameDAO.php" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/ac_store_project/classes/OrderDAO.php" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/ac_store_project/classes/UserDAO.php" dialect="GenericSQL" />

@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block title %}{{ game.title }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        <img src="{{ game.image }}" alt="{{ game.title }}" class="img-fluid">
+    </div>
+    <div class="col-md-6">
+        <h2>{{ game.title }}</h2>
+        <p>{{ game.description }}</p>
+        <p><strong>{{ game.price }} €</strong></p>
+    </div>
+</div>
+{% endblock %}
