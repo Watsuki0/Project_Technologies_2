@@ -15,19 +15,10 @@ $allowedPages = [
     'account',
     'cart',
     'order_summary',
-    // Admin pages
     'dashboard',
-    'manage_games',
-    'manage_users',
-    'manage_orders',
-    // AJAX pages pour admin (important de les lister ici)
-    'ajax_get_games_list',
-    'ajax_get_users_list',
-    'ajax_get_orders_list',
 ];
 
 $adminPages = ['dashboard'];
-$adminAjaxPages = ['ajax_get_games_list', 'ajax_get_users_list', 'ajax_get_orders_list'];
 $accountPages = ['account', 'login', 'logout', 'register'];
 $cartPages = ['cart', 'order_summary'];
 $homePages = ['home', 'product'];
