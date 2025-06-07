@@ -66,11 +66,6 @@ header nav ul li a:hover {
     color: var(--color-text-primary);
 }
 
-/* === MAIN === */
-main {
-    padding: 2rem;
-}
-
 /* === FOOTER === */
 footer {
     display: flex;
@@ -166,10 +161,8 @@ footer {
     color: var(--color-text-primary);
     margin-bottom: 1rem;
 }
-
 .admin-dashboard form {
-    margin-bottom: 2rem;
-    padding: 1.5rem;
+    padding: 0.5rem;
     width: 100%;
 }
 
@@ -178,7 +171,6 @@ footer {
 .admin-dashboard form button {
     display: block;
     width: 100%;
-    margin-bottom: 1rem;
     padding: 0.7rem;
     border: none;
     font-size: 1rem;
@@ -206,6 +198,7 @@ footer {
     width: 100%;
     border-collapse: collapse;
     margin-top: 1rem;
+    margin-bottom: 1rem;
     background-color: var(--color-bg-light);
 }
 
@@ -242,36 +235,6 @@ footer {
     padding: 0.5rem 0;
     border-bottom: 1px solid #333;
 }
-
-#add_game_form {
-    background-color: var(--color-bg-form);
-    border: 1px solid var(--color-text-primary);
-    padding: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-#add_game_form h3 {
-    color: var(--color-text-primary);
-    margin-bottom: 1rem;
-}
-
-#add_game_form input,
-#add_game_form textarea {
-    background-color: #2e2e2e;
-    color: var(--color-text-light);
-    border: 1px solid var(--color-border);
-}
-
-#add_game_form button {
-    background-color: var(--color-text-primary);
-    color: #000;
-    font-weight: bold;
-}
-
-#add_game_form button:hover {
-    background-color: var(--color-btn-hover);
-}
-
 
 /* === ACCOUNT/LOGIN/REGISTER === */
 
@@ -457,12 +420,24 @@ p {
 
 /* === PRODUIT === */
 
+.product-page-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
 .product-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     max-width: 900px;
-    margin: auto;
+    margin: 20px;
     padding: 20px;
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-light);
 }
 
 .product-title {
