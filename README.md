@@ -7,6 +7,7 @@
 - Modifier si nécessaire le profil et mot de passe dans le fichier /includes/db.php
 - Installer les dépendances requise.
 - Ne pas changer les emplacements de dossiers/fichiers.
+- Créer un utilisateur et le promouvoir en Admin du côté base de données PgAdmin4.
 
 ### Ressources :
 - Youtube
