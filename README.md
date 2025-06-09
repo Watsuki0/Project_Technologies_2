@@ -1,6 +1,6 @@
 # Project_Technologies_2
 
-## La version final du projet se trouve dans la branche Master
+## La version final du projet PHP se trouve dans la branche Master
 
 ### Il faut bien penser à :
 - Ajouter les dump du backup.
