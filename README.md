@@ -1,6 +1,6 @@
 # Project_Technologies_2
 
-## La version final du projet se trouve dans la branche Done
+## La version final du projet se trouve dans la branche Master
 
 ### Il faut bien penser à :
 - Ajouter les dump du backup.
@@ -14,3 +14,5 @@
 - Discord
 - Fichiers du professeur
 - AI (ChatGPT, Copilot)
+  
+### Une modification a été effecuté après le travail rendu car il y a eu un problème pour la liaison du style du site sur plusieurs version.
