@@ -1,0 +1,528 @@
+:root {
+    --color-bg-dark: #121212;
+    --color-bg-medium: #121212;
+    --color-bg-light: #1e1e1e;
+    --color-bg-form: #202020;
+    --color-bg-white: #ffffff;
+    --color-text-dark: #111;
+    --color-text-light: #ffffff;
+    --color-text-gray: #939393;
+    --color-text-primary: #ffffff;
+    --color-accent: #4076ff;
+    --color-accent-hover: #0045f5;
+    --color-border: #444;
+    --color-btn-hover: #1a64ff;
+    --color-danger: #c0392b;
+    --color-danger-hover: #e74c3c;
+}
+
+/* === BODY / GLOBAL === */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+/* === HEADER === */
+header {
+    background-color: var(--color-bg-dark);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-text-light);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+header h1 a {
+    color: var(--color-text-light);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+header h1 a:hover {
+    color: var(--color-text-gray);
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1.2rem;
+}
+
+header nav ul li a {
+    color: var(--color-text-light);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: var(--color-text-primary);
+}
+
+/* === FOOTER === */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-light);
+    padding: 1rem;
+}
+
+/* === GAMES GRID === */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.game-card {
+    background-color: var(--color-bg-white);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.game-card h2 {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0.5rem 0;
+}
+
+.game-card img {
+    border-radius: 8px;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.game-card img:hover {
+    filter: brightness(0.8);
+    transform: scale(1.05);
+}
+
+.game-card p {
+    font-size: 1rem;
+    color: var(--color-text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.game-card a {
+    text-decoration: none;
+    color: #1e1c1c;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.game-card a:hover {
+    color: var(--color-text-gray);
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    transition: opacity 0.3s ease;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* === ADMIN DASHBOARD === */
+.admin-dashboard {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--color-bg-medium);
+    color: var(--color-text-light);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.admin-dashboard h1,
+.admin-dashboard h3 {
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+}
+
+.admin-dashboard form {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    width: 100%;
+}
+
+.admin-dashboard form input,
+.admin-dashboard form textarea,
+.admin-dashboard form button {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.7rem;
+    border: none;
+    font-size: 1rem;
+}
+
+.admin-dashboard form input,
+.admin-dashboard form textarea {
+    background-color: #333;
+    color: var(--color-text-light);
+}
+
+.admin-dashboard form button {
+    background-color: var(--color-text-primary);
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.admin-dashboard form button:hover {
+    background-color: var(--color-btn-hover);
+}
+
+.admin-dashboard table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background-color: var(--color-bg-light);
+}
+
+.admin-dashboard table th,
+.admin-dashboard table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-light);
+}
+
+.admin-dashboard table th {
+    background-color: #333;
+    color: var(--color-text-primary);
+}
+
+.admin-dashboard form[style*="inline"] button {
+    background-color: var(--color-danger);
+    color: var(--color-text-light);
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+.admin-dashboard form[style*="inline"] button:hover {
+    background-color: var(--color-danger-hover);
+}
+
+.admin-dashboard ul {
+    list-style: none;
+    padding: 0;
+}
+
+.admin-dashboard ul li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #333;
+}
+
+#add_game_form {
+    background-color: var(--color-bg-form);
+    border: 1px solid var(--color-text-primary);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+#add_game_form h3 {
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+}
+
+#add_game_form input,
+#add_game_form textarea {
+    background-color: #2e2e2e;
+    color: var(--color-text-light);
+    border: 1px solid var(--color-border);
+}
+
+#add_game_form button {
+    background-color: var(--color-text-primary);
+    color: #000;
+    font-weight: bold;
+}
+
+#add_game_form button:hover {
+    background-color: var(--color-btn-hover);
+}
+
+
+/* === ACCOUNT/LOGIN/REGISTER === */
+
+.auth-container {
+    max-width: 400px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: var(--color-bg-medium);
+    color: var(--color-text-light);
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+.auth-container h1 {
+    text-align: center;
+    color: var(--color-text-primary);
+    margin-bottom: 1.5rem;
+}
+
+.auth-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-container label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.auth-container input {
+    padding: 0.6rem;
+    margin-bottom: 1.2rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #2e2e2e;
+    color: var(--color-text-light);
+    font-size: 1rem;
+}
+
+.auth-container button {
+    background-color: var(--color-text-primary);
+    color: #000;
+    padding: 0.8rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.auth-container button:hover {
+    background-color: var(--color-btn-hover);
+}
+
+.auth-container p {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+.auth-container a {
+    color: var(--color-text-primary);
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.auth-container a:hover {
+    color: var(--color-btn-hover);
+}
+
+.auth-container .message {
+    padding: 0.8rem;
+    margin-bottom: 1.2rem;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.auth-container .message.error {
+    background-color: #4e1f1f;
+    color: var(--color-danger);
+    border: 1px solid var(--color-danger-hover);
+}
+
+.auth-container .message.success {
+    background-color: #1f4e2f;
+    color: #2ecc71;
+    border: 1px solid #27ae60;
+}
+
+.account-info {
+    max-width: 400px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: var(--color-bg-medium);
+    color: var(--color-text-light);
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+.account-info h1 {
+    text-align: center;
+    color: var(--color-text-primary);
+    margin-bottom: 1.5rem;
+}
+
+.account-info p {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+}
+
+.account-info form button {
+    background-color: var(--color-danger);
+    color: var(--color-text-light);
+    padding: 0.6rem 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.account-info form button:hover {
+    background-color: var(--color-danger-hover);
+}
+
+/* === PANIER/ORDER === */
+
+.cart-container, .order-summary-container {
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: var(--color-bg-medium);
+    border-radius: 12px;
+    color: var(--color-text-light);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+.cart-container h1, .order-summary-container h1,
+.cart-container h3, .order-summary-container h3 {
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+}
+
+.cart-container table, .order-summary-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+}
+
+.cart-container th, .cart-container td,
+.order-summary-container th, .order-summary-container td {
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    text-align: left;
+}
+
+.cart-container th, .order-summary-container th {
+    background-color: var(--color-bg-dark);
+    color: var(--color-accent);
+}
+
+.cart-container button, .order-summary-container button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--color-accent);
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-right: 1rem;
+}
+
+.cart-container button:hover,
+.order-summary-container button:hover {
+    background-color: var(--color-accent-hover);
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+/* === PRODUIT === */
+
+body .product_center {
+    display: flex;
+    justify-content: center;
+}
+
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.product-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.product-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.product-image img {
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.product-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.product-description {
+    font-size: 1.1rem;
+}
+
+.product-price {
+    font-size: 1.5rem;
+    color: #1a8917;
+    font-weight: bold;
+}
+
+.product-form {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.product-form input[type="number"] {
+    width: 60px;
+}
+.product-form button{
+    color: white;
+    font-weight: bold;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: var(--color-accent);
+}
+.product-form button:hover{
+    color: white;
+    background-color: var(--color-accent-hover);
+}
