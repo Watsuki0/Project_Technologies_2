@@ -93,13 +93,11 @@ $total = 0;
                         <td>
                             <form method="post">
                                 <input type="hidden" name="game_id" value="<?= $game->id ?>">
-                                <label>
-                                    <select name="update_quantity" onchange="this.form.submit()">
-                                        <?php for ($i = 1; $i <= 99; $i++): ?>
-                                            <option value="<?= $i ?>" <?= $i == $quantity ? 'selected' : '' ?>><?= $i ?></option>
-                                        <?php endfor; ?>
-                                    </select>
-                                </label>
+                                <select name="update_quantity" onchange="this.form.submit()">
+                                    <?php for ($i = 1; $i <= 99; $i++): ?>
+                                        <option value="<?= $i ?>" <?= $i == $quantity ? 'selected' : '' ?>><?= $i ?></option>
+                                    <?php endfor; ?>
+                                </select>
                             </form>
                         </td>
                         <td><?= number_format($subtotal, 2) ?> €</td>

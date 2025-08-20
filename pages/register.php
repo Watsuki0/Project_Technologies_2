@@ -44,24 +44,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <form method="post">
         <label>Nom d'utilisateur :</label><br>
-        <label>
-            <input type="text" name="username" required>
-        </label><br><br>
+        <input type="text" name="username" required><br><br>
 
         <label>Email :</label><br>
-        <label>
-            <input type="email" name="email" required>
-        </label><br><br>
+        <input type="email" name="email" required><br><br>
 
         <label>Mot de passe :</label><br>
-        <label>
-            <input type="password" name="password" required>
-        </label><br><br>
+        <input type="password" name="password" required><br><br>
 
         <label>Confirmer le mot de passe :</label><br>
-        <label>
-            <input type="password" name="confirm_password" required>
-        </label><br><br>
+        <input type="password" name="confirm_password" required><br><br>
 
         <button type="submit">S'inscrire</button>
     </form>
