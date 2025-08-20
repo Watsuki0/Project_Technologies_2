@@ -54,14 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header('Location: index.php?page=cart');
         exit;
     }
-
-    if (isset($_POST['delete_item'], $_POST['game_id'])) {
-        $gameId = (int) $_POST['game_id'];
-        unset($_SESSION['cart'][$gameId]);
-        $orderDAO->deleteCartItem($userId, $gameId); // Supposée exister
-        header('Location: index.php?page=cart');
-        exit;
-    }
 }
 
 $cart = $_SESSION['cart'];
@@ -101,11 +93,13 @@ $total = 0;
                         <td>
                             <form method="post">
                                 <input type="hidden" name="game_id" value="<?= $game->id ?>">
-                                <select name="update_quantity" onchange="this.form.submit()">
-                                    <?php for ($i = 1; $i <= 99; $i++): ?>
-                                        <option value="<?= $i ?>" <?= $i == $quantity ? 'selected' : '' ?>><?= $i ?></option>
-                                    <?php endfor; ?>
-                                </select>
+                                <label>
+                                    <select name="update_quantity" onchange="this.form.submit()">
+                                        <?php for ($i = 1; $i <= 99; $i++): ?>
+                                            <option value="<?= $i ?>" <?= $i == $quantity ? 'selected' : '' ?>><?= $i ?></option>
+                                        <?php endfor; ?>
+                                    </select>
+                                </label>
                             </form>
                         </td>
                         <td><?= number_format($subtotal, 2) ?> €</td>

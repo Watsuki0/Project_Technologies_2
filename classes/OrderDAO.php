@@ -8,31 +8,25 @@ class OrderDAO
     {
         $this->db = Database::getConnection();
     }
-
+    // Ajout d'une commande via la fonction PL/pgSQL add_order (retourne un int)
     public function createOrder($userId, $cart)
     {
         try {
             $this->db->beginTransaction();
 
-            $stmt = $this->db->prepare('INSERT INTO orders (user_id) VALUES (:user_id) RETURNING id');
+            // Création de la commande et récupération de l'ID
+            $stmt = $this->db->prepare("SELECT add_order(:user_id)");
             $stmt->execute([':user_id' => $userId]);
-            $orderId = $stmt->fetchColumn();
+            $orderId = (int) $stmt->fetchColumn(); // assure un int côté PHP
 
-            $stmtDetail = $this->db->prepare(
-                'INSERT INTO order_items (order_id, game_id, quantity) VALUES (:order_id, :game_id, :quantity)'
-            );
-
-            $gameDAO = new GameDAO();
-
+            // Ajout des items de la commande
+            $stmtDetail = $this->db->prepare("
+            CALL add_order_item(:order_id, :game_id, :quantity)
+        ");
             foreach ($cart as $gameId => $quantity) {
-                $game = $gameDAO->getGameById($gameId);
-                if (!$game) {
-                    throw new Exception("Jeu ID $gameId introuvable.");
-                }
-
                 $stmtDetail->execute([
                     ':order_id' => $orderId,
-                    ':game_id' => $gameId,
+                    ':game_id'  => $gameId,
                     ':quantity' => $quantity
                 ]);
             }
@@ -44,6 +38,13 @@ class OrderDAO
             $this->db->rollBack();
             throw new Exception("Erreur lors de la création de la commande : " . $e->getMessage());
         }
+    }
+
+
+    public function deleteOrderById($orderId)
+    {
+        $stmt = $this->db->prepare("CALL delete_order(:id)");
+        $stmt->execute([':id' => $orderId]);
     }
 
     public function getOrderById($orderId): ?Order
@@ -113,22 +114,5 @@ class OrderDAO
 
         return $orders;
     }
-
-    public function deleteOrderById($orderId)
-    {
-        try {
-            $this->db->beginTransaction();
-
-            $stmtItems = $this->db->prepare("DELETE FROM order_items WHERE order_id = :order_id");
-            $stmtItems->execute([':order_id' => $orderId]);
-
-            $stmtOrder = $this->db->prepare("DELETE FROM orders WHERE id = :order_id");
-            $stmtOrder->execute([':order_id' => $orderId]);
-
-            $this->db->commit();
-        } catch (Exception $e) {
-            $this->db->rollBack();
-            throw new Exception("Erreur lors de la suppression de la commande : " . $e->getMessage());
-        }
-    }
 }
+

@@ -5,10 +5,10 @@ class Auth
     public static function login($user)
     {
         $_SESSION['user'] = [
-            'id' => $user['id'],
-            'username' => $user['username'],
-            'email' => $user['email'],
-            'is_admin' => $user['is_admin'],
+            'id' => $user->getId(),
+            'username' => $user->getUsername(),
+            'email' => $user->getEmail(),
+            'is_admin' => $user->isAdmin(),
         ];
     }
     public static function logout()
@@ -28,8 +28,17 @@ class Auth
         return self::isConnected() && !empty($_SESSION['user']['is_admin']) && $_SESSION['user']['is_admin'] === true;
     }
 
+    public static function getUserId(): ?int
+    {
+        return $_SESSION['user']['id'] ?? null;
+    }
+
     public static function getUser()
     {
-        return $_SESSION['user'] ?? null;
+        if (!isset($_SESSION['user'])) {
+            throw new Exception("Utilisateur non connecté");
+        }
+        return $_SESSION['user'];
     }
+
 }

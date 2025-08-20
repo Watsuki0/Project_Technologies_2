@@ -12,18 +12,22 @@ class UserDAO
     public function register(User $user, string $password)
     {
         $hash = password_hash($password, PASSWORD_DEFAULT);
-        $stmt = $this->db->prepare('
-        INSERT INTO users (username, email, password, is_admin)
-        VALUES (:username, :email, :password, :is_admin)
-    ');
 
-        return $stmt->execute([
+        $stmt = $this->db->prepare("CALL add_user(:username, :email, :password, :is_admin)");
+        $stmt->execute([
             ':username' => $user->getUsername(),
             ':email' => $user->getEmail(),
             ':password' => $hash,
             ':is_admin' => $user->isAdmin() ? 1 : 0
         ]);
     }
+
+    public function deleteUser(int $userId): void
+    {
+        $stmt = $this->db->prepare("CALL delete_user(:id)");
+        $stmt->execute([':id' => $userId]);
+    }
+
 
 
     public function login(string $email, string $password): ?User
@@ -51,12 +55,6 @@ class UserDAO
         $stmt = $this->db->query('SELECT COUNT(*) AS total FROM users');
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         return (int) $result['total'];
-    }
-
-    public function deleteUser(int $userId): void
-    {
-        $stmt = $this->db->prepare('DELETE FROM users WHERE id = :id');
-        $stmt->execute([':id' => $userId]);
     }
 
     //Permet de fournir des données correspondantes aux attributs : Aide : Easy-micro.org.

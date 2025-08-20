@@ -10,16 +10,21 @@ $success = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username']);
     $email = trim($_POST['email']);
-    $password = $_POST['password'];
-    $confirm_password = $_POST['confirm_password'];
+    $password = $_POST['password'] ?? '';
+    $confirm_password = $_POST['confirm_password'] ?? '';
 
-    if ($password !== $confirm_password) {
+    // Vérifications
+    if (empty($username) || empty($email) || empty($password) || empty($confirm_password)) {
+        $error = "Tous les champs sont obligatoires.";
+    } elseif ($password !== $confirm_password) {
         $error = "Les mots de passe ne correspondent pas.";
     } else {
         try {
-            $user = new User(null, $username, $email, null, false); // Pas de mot de passe dans l’objet, juste les infos de base
+            // Créer l'objet User avec le mot de passe fourni
+            $user = new User(null, $username, $email, $password, false);
             $userDAO = new UserDAO();
             $userDAO->register($user, $password);
+
             $success = "Compte créé avec succès. Vous pouvez maintenant vous connecter.";
         } catch (Exception $e) {
             $error = "Erreur lors de l'inscription : " . $e->getMessage();
@@ -39,16 +44,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <form method="post">
         <label>Nom d'utilisateur :</label><br>
-        <input type="text" name="username" required><br><br>
+        <label>
+            <input type="text" name="username" required>
+        </label><br><br>
 
         <label>Email :</label><br>
-        <input type="email" name="email" required><br><br>
+        <label>
+            <input type="email" name="email" required>
+        </label><br><br>
 
         <label>Mot de passe :</label><br>
-        <input type="password" name="password" required><br><br>
+        <label>
+            <input type="password" name="password" required>
+        </label><br><br>
 
         <label>Confirmer le mot de passe :</label><br>
-        <input type="password" name="confirm_password" required><br><br>
+        <label>
+            <input type="password" name="confirm_password" required>
+        </label><br><br>
 
         <button type="submit">S'inscrire</button>
     </form>
