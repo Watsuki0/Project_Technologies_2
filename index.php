@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AC Store</title>
-    <link rel="stylesheet" href="/SitePHP/Credo_site/ac_store_project/assets/css/style.css">
+    <link rel="stylesheet" href="/Project_Web_Aout/assets/css/style.css?v=<?= time() ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/c35aed3eb1.js" crossorigin="anonymous"></script>
 </head>

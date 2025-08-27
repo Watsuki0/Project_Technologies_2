@@ -89,7 +89,7 @@ footer {
 .game-card {
     background-color: var(--color-bg-white);
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     padding: 1rem;
     text-align: center;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -97,7 +97,7 @@ footer {
 
 .game-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
 .game-card h2 {
@@ -267,6 +267,21 @@ footer {
     background-color: var(--color-btn-hover);
 }
 
+.admin-dashboard .delete-order-btn {
+    background-color: var(--color-danger);
+    color: var(--color-text-light);
+    padding: 0.5rem 1rem;
+    width: 100%;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.admin-dashboard .delete-order-btn:hover {
+    background-color: var(--color-danger-hover);
+}
 
 /* === ACCOUNT/LOGIN/REGISTER === */
 

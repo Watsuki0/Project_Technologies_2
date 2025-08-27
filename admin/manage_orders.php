@@ -42,13 +42,14 @@ $orders = $orderDAO->getAllOrders();
                 <td><?= date('d/m/Y', strtotime($order->getCreatedAt())) ?></td>
                 <td><?= number_format($order->getTotal(), 2) ?> €</td>
                 <td>
-                    <form method="post" style="display:inline;">
-                        <input type="hidden" name="order_id" value="<?= $order->getId() ?>">
-                        <button type="submit" name="delete_order" onclick="return confirm('Supprimer cette commande « N°<?= addslashes($order->getId()) ?> : <?= addslashes($order->getTotal()) ?>€ » ?');">Supprimer</button>
-                    </form>
+                    <button class="delete-order-btn" data-order-id="<?= $order->getId() ?>">
+                        Supprimer
+                    </button>
                 </td>
             </tr>
         <?php endforeach; ?>
         </tbody>
     </table>
 <?php endif; ?>
+
+<script src="/Project_Web_Aout/assets/js/manage_orders.js"></script>

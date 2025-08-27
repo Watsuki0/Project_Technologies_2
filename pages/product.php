@@ -25,16 +25,18 @@ if (!$game) {
                 <p class="product-price"><?= number_format($game->price, 2, ',', ' ') ?> €</p>
 
                 <?php if (isset($_SESSION['user'])): ?>
-                    <form action="index.php?page=panier" method="post" class="product-form">
-                        <input type="hidden" name="game_id" value="<?= $game->id ?>">
+                    <div class="product-form">
                         <label for="quantity">Quantité</label>
-                        <input type="number" name="quantity" value="1" min="1" id="quantity">
-                        <button type="submit" class="btn">Ajouter au panier</button>
-                    </form>
+                        <input type="number" id="product-quantity" value="1" min="1">
+                        <button type="button" class="btn" id="add-to-cart-btn" data-game-id="<?= $game->id ?>">Ajouter au panier</button>
+                    </div>
                 <?php else: ?>
                     <p><a href="index.php?page=login">Connectez-vous</a> pour ajouter au panier.</p>
                 <?php endif; ?>
+
             </div>
         </div>
     </div>
 </div>
+
+<script src="/Project_Web_Aout/assets/js/product.js"></script>

@@ -8,65 +8,13 @@ if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['game_id'], $_POST['quantity'])) {
-        $gameId = (int) $_POST['game_id'];
-        $quantity = (int) $_POST['quantity'];
-
-        if ($quantity > 0) {
-            $_SESSION['cart'][$gameId] = ($_SESSION['cart'][$gameId] ?? 0) + $quantity;
-        }
-
-        header('Location: index.php?page=cart');
-        exit;
-    }
-
-    $userId = Auth::getUser()['id'];
-    $orderDAO = new OrderDAO();
-
-    if (isset($_POST['clear'])) {
-        unset($_SESSION['cart']);
-        header('Location: index.php?page=cart');
-        exit;
-    }
-
-    if (isset($_POST['checkout'])) {
-        try {
-            if (!empty($_SESSION['cart'])) {
-                $orderId = $orderDAO->createOrder($userId, $_SESSION['cart']);
-                unset($_SESSION['cart']);
-                header("Location: index.php?page=order_summary&id=$orderId");
-                exit;
-            } else {
-                $error = "Votre panier est vide.";
-            }
-        } catch (Exception $e) {
-            $error = "Erreur lors de la commande : " . $e->getMessage();
-        }
-    }
-
-    if (isset($_POST['update_quantity'], $_POST['game_id'])) {
-        $gameId = (int) $_POST['game_id'];
-        $newQuantity = (int) $_POST['update_quantity'];
-        if ($newQuantity > 0) {
-            $_SESSION['cart'][$gameId] = $newQuantity;
-        }
-        header('Location: index.php?page=cart');
-        exit;
-    }
-}
-
 $cart = $_SESSION['cart'];
 $gameDAO = new GameDAO();
-$total = 0;
+$total = 0.0;
 ?>
 
 <div class="cart-container">
     <h1>Mon Panier</h1>
-
-    <?php if (isset($error)): ?>
-        <p style="color: red;"><?= htmlspecialchars($error) ?></p>
-    <?php endif; ?>
 
     <?php if (empty($cart)): ?>
         <p>Votre panier est vide.</p>
@@ -82,36 +30,35 @@ $total = 0;
             </thead>
             <tbody>
             <?php foreach ($cart as $gameId => $quantity):
-                $game = $gameDAO->getGameById($gameId);
+                $game = $gameDAO->getGameById((int)$gameId);
                 if ($game):
-                    $subtotal = $game->price * $quantity;
+                    $subtotal = $game->price * (int)$quantity;
                     $total += $subtotal;
                     ?>
                     <tr>
                         <td><?= htmlspecialchars($game->title) ?></td>
-                        <td><?= number_format($game->price, 2) ?> €</td>
+                        <td><?= number_format($game->price, 2, ',', ' ') ?> €</td>
                         <td>
-                            <form method="post">
-                                <input type="hidden" name="game_id" value="<?= $game->id ?>">
-                                <select name="update_quantity" onchange="this.form.submit()">
-                                    <?php for ($i = 1; $i <= 99; $i++): ?>
-                                        <option value="<?= $i ?>" <?= $i == $quantity ? 'selected' : '' ?>><?= $i ?></option>
-                                    <?php endfor; ?>
-                                </select>
-                            </form>
+                            <select class="quantity-select" data-game-id="<?= (int)$game->id ?>">
+                                <?php for ($i = 1; $i <= 99; $i++): ?>
+                                    <option value="<?= $i ?>" <?= $i == $quantity ? 'selected' : '' ?>><?= $i ?></option>
+                                <?php endfor; ?>
+                            </select>
                         </td>
-                        <td><?= number_format($subtotal, 2) ?> €</td>
+                        <td id="subtotal-<?= (int)$game->id ?>"><?= number_format($subtotal, 2, ',', ' ') ?> €</td>
                     </tr>
                 <?php endif; ?>
             <?php endforeach; ?>
             </tbody>
         </table>
 
-        <h3>Total : <?= number_format($total, 2) ?> €</h3>
+        <h3>Total : <span id="total-price"><?= number_format($total, 2, ',', ' ') ?> €</span></h3>
 
-        <form method="post">
-            <button type="submit" name="checkout">Valider la commande</button>
-            <button type="submit" name="clear">Vider le panier</button>
-        </form>
+        <div class="cart-actions">
+            <button type="button" id="checkout-btn">Valider la commande</button>
+            <button type="button" id="clear-btn">Vider le panier</button>
+        </div>
     <?php endif; ?>
 </div>
+
+<script src="/Project_Web_Aout/assets/js/panier.js"></script>
