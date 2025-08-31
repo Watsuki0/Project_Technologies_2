@@ -4,8 +4,9 @@
 
 ### Il faut bien penser à :
 - Ajouter les dump du backup.
-- Modifier si nécessaire le profil et mot de passe dans le fichier /config/data_db.php
+- Modifier si nécessaire le profil et mot de passe dans le fichier **/config/data_db.php**
 - Installer les dépendances requise.
+- Modifier le nom du dossier racine en **Project_Web_Aout**
 - Ne pas changer les emplacements de dossiers/fichiers.
 - Créer un utilisateur et le promouvoir en Admin du côté base de données PgAdmin4.
 
